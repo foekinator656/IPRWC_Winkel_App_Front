@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="background-color: darkblue">
+<nav class="navbar navbar-default" style="background-color: deepskyblue">
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="#" class="navbar-brand" style="color: white">EbikeNL</a>
@@ -8,7 +8,7 @@
         <li role="presentation"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/">Shop</a>
+          <a routerLink="/shop">Shop</a>
         </li>
         <li role="presentation"
             routerLinkActive="active"
@@ -18,7 +18,12 @@
         <li role="presentation"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{exact: true}">
-          <a routerLink="/login">Inloggen</a>
+          <a routerLink="/login">Inloggen/Aanmelden</a>
+        </li>
+        <li role="presentation"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/account">{{loginService.welcomeString}}</a>
         </li>
       </ul>
     </div>

@@ -11,6 +11,10 @@ import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import {FormsModule} from "@angular/forms";
+import {LoginService} from "./login/login.service";
+import {OrderService} from "./order/order.service";
+import { OrderItemComponent } from './order/order-item/order-item.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +25,16 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     OrderComponent,
     PaymentComponent,
     LoginComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    OrderItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [LoginService,OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

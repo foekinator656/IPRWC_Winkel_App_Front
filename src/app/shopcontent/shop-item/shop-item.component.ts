@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BikeModel} from "../../models/bike-model.model";
+import {BikeModel} from "../../shared/models/bike-model.model";
+import {OrderService} from "../../order/order.service";
 
 @Component({
   selector: 'app-shop-item',
@@ -10,12 +11,13 @@ export class ShopItemComponent implements OnInit {
   @Input("bikeModel")
   bikeModel!: BikeModel;
 
+  constructor(public orderService: OrderService) {
+  }
 
   ngOnInit(): void {
   }
 
   onAddToCart(bikeModelId: number) {
-
-
+    this.orderService.addBikeModelToCart(bikeModelId);
   }
 }

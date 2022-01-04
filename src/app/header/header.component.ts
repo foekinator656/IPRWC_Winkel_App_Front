@@ -1,4 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnChanges, OnInit, Output} from '@angular/core';
+import {LoginService} from "../login/login.service";
 
 @Component({
   selector: 'app-header',
@@ -7,14 +8,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() selectionUrl = new EventEmitter<string>();
-
-  constructor() { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
-  }
-
-  onSelect(ebikes: string) {
-    this.selectionUrl.emit(ebikes);
+    this.loginService.makeWelcomeString()
   }
 }

@@ -2,7 +2,6 @@ import {BikeModel} from "./bike-model.model";
 
 
 export class Bike {
-  public bikeId: number;
   public bikeName: string;
   public bikeModel: BikeModel;
   public price: number;
@@ -11,8 +10,7 @@ export class Bike {
 
 
 
-  constructor(bikeId: number, bikeName: string, bikeModel: BikeModel, price: number, bikeInStock: boolean, bikeIsSold: boolean) {
-    this.bikeId = bikeId;
+  constructor(bikeName: string, bikeModel: BikeModel, price: number, bikeInStock: boolean, bikeIsSold: boolean) {
     this.bikeName = bikeName;
     this.bikeModel = bikeModel;
     this.price = price;
