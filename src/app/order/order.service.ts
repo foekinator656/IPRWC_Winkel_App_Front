@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Bike} from "../shared/models/bike.model";
-import {ShopUser} from "../shared/models/shop-user.model";
 import {HttpClient} from "@angular/common/http";
 import {ApiService} from "../shared/api.service";
 import {BikeModel} from "../shared/models/bike-model.model";

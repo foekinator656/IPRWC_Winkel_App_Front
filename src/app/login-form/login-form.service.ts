@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BikeModel} from "../shared/models/bike-model.model";
 import {LoginRequest} from "../shared/models/login.request";
 import {ShopUser} from "../shared/models/shop-user.model";
 import {ApiService} from "../shared/api.service";
-import {HeaderComponent} from "../header/header.component";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +14,7 @@ export class LoginFormService {
   private _userIsLoggedIn: boolean = false;
   public welcomeString: string = "";
 
-  constructor(private http: HttpClient, private apiService: ApiService) { }
+  constructor(private http: HttpClient, private apiService: ApiService ) { }
 
   loginShopUser(loginRequest: LoginRequest){
     if (!this.userIsLoggedIn){
@@ -46,7 +44,7 @@ export class LoginFormService {
 
   makeWelcomeString() {
     console.log(this.shopUser);
-    if (this.shopUser !== undefined){
+    if (this.userIsLoggedIn){
       this.welcomeString = "Welkom " + this.shopUser.firstName;
     } else {
       this.welcomeString = "Welkom Gast";
