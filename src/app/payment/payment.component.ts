@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginFormService} from "../login-form/login-form.service";
+import {OrderService} from "../order/order.service";
+import {BikeOrder} from "../shared/models/bike-order.model";
 
 @Component({
   selector: 'app-payment',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loginFormService: LoginFormService, public orderService: OrderService) { }
 
   ngOnInit(): void {
   }
 
+  onPlaceOrder() {
+    this.orderService.sendOrder();
+  }
 }

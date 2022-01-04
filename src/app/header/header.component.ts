@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnChanges, OnInit, Output} from '@angular/core';
-import {LoginService} from "../login/login.service";
+import {LoginFormService} from "../login-form/login-form.service";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import {LoginService} from "../login/login.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginFormService) { }
 
   ngOnInit(): void {
     this.loginService.makeWelcomeString()

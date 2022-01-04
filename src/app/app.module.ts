@@ -9,12 +9,13 @@ import { ShopItemComponent } from './shopcontent/shop-item/shop-item.component';
 import { HeaderComponent } from './header/header.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
-import { LoginComponent } from './login/login.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import {FormsModule} from "@angular/forms";
-import {LoginService} from "./login/login.service";
+import {LoginFormService} from "./login-form/login-form.service";
 import {OrderService} from "./order/order.service";
 import { OrderItemComponent } from './order/order-item/order-item.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { OrderItemComponent } from './order/order-item/order-item.component';
     HeaderComponent,
     OrderComponent,
     PaymentComponent,
-    LoginComponent,
+    LoginFormComponent,
     ErrorPageComponent,
     OrderItemComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import { OrderItemComponent } from './order/order-item/order-item.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService,OrderService],
+  providers: [LoginFormService,OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

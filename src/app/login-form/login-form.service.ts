@@ -9,22 +9,39 @@ import {HeaderComponent} from "../header/header.component";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class LoginFormService {
+
+
   private _shopUser!: ShopUser;
+  private _userIsLoggedIn: boolean = false;
   public welcomeString: string = "";
 
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
   loginShopUser(loginRequest: LoginRequest){
-    this.http.post<ShopUser>(this.apiService.apiUrl+'shopuser/login',loginRequest)
-      .subscribe(shopUser => {
-        console.log(shopUser);
-        this._shopUser = shopUser;
-      });
+    if (!this.userIsLoggedIn){
+      this.http.post<ShopUser>(this.apiService.apiUrl+'shopuser/login',loginRequest)
+        .subscribe(shopUser => {
+          console.log(shopUser);
+          this.shopUser = shopUser;
+          // TODO error message geven wanneer het fout gaat
+          this.userIsLoggedIn = true;
+        });
+    }
   }
 
   get shopUser(): ShopUser {
     return this._shopUser;
+  }
+  set shopUser(value: ShopUser) {
+    this._shopUser = value;
+  }
+  get userIsLoggedIn(): boolean {
+    return this._userIsLoggedIn;
+  }
+
+  set userIsLoggedIn(value: boolean) {
+    this._userIsLoggedIn = value;
   }
 
   makeWelcomeString() {
@@ -36,4 +53,7 @@ export class LoginService {
     }
   }
 
+  logOutShopUser() {
+    this.userIsLoggedIn = false;
+  }
 }

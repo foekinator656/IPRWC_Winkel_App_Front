@@ -4,7 +4,7 @@
     <h1>Totale Prijs: &euro; {{orderService.totalOrderPrice}} </h1>
     <hr>
     <div class="row">
-      <button class="btn btn-primary btn-success">Bestellen!</button>
+      <button class="btn btn-primary btn-success" [disabled]="orderService.bikesInCart.length === 0" (click)="onOrderButtonPressed()">Bestellen!</button>
     </div>
     <hr>
     <app-order-item
@@ -12,7 +12,7 @@
       [bike]="singleBike"></app-order-item>
     <hr>
     <div class="row">
-      <button class="btn btn-primary btn-success">Bestellen!</button>
+      <button class="btn btn-primary btn-success" [disabled]="orderService.bikesInCart.length === 0" (click)="onOrderButtonPressed()">Bestellen!</button>
     </div>
   </div>
 </div>

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormsModule, NgForm} from "@angular/forms";
-import {Form} from "@angular/forms";
-import {LoginService} from "./login.service";
-import {LoginRequest} from "../shared/models/login.request";
+import {LoginFormService} from "../login-form/login-form.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,21 +9,13 @@ import {LoginRequest} from "../shared/models/login.request";
 })
 export class LoginComponent implements OnInit {
 
-  isLoginMode = true;
-  errorMessage!: string;
-
-  constructor(public loginService: LoginService) { }
+  constructor(public loginFormService: LoginFormService,public router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onLoginShopUser(loginForm: NgForm) {
-    if (!loginForm.valid) return;
-    let loginRequest = new LoginRequest(loginForm.value.email, loginForm.value.password);
-    this.loginService.loginShopUser(loginRequest);
-    this.loginService.makeWelcomeString();
-  }
-  onSwitchMode(){
-    this.isLoginMode = !this.isLoginMode;
+  onLogOut() {
+    this.loginFormService.logOutShopUser();
+      this.router.navigate(['/','shop']);
   }
 }
