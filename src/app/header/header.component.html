@@ -20,6 +20,11 @@
             [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/login">Inloggen/Aanmelden</a>
         </li>
+        <li *ngIf="loginService.userIsAdmin" role="presentation"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/manage">Beheer</a>
+        </li>
         <li role="presentation"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{exact: true}">

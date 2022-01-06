@@ -8,14 +8,15 @@ import { ShopContentComponent } from './shopcontent/shop-content.component';
 import { ShopItemComponent } from './shopcontent/shop-item/shop-item.component';
 import { HeaderComponent } from './header/header.component';
 import { OrderComponent } from './order/order.component';
-import { PaymentComponent } from './payment/payment.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { PaymentComponent } from './order/payment/payment.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import {FormsModule} from "@angular/forms";
-import {LoginFormService} from "./login-form/login-form.service";
+import {LoginService} from "./login/login.service";
 import {OrderService} from "./order/order.service";
 import { OrderItemComponent } from './order/order-item/order-item.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrationFormComponent } from './login/registration-form/registration-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     LoginFormComponent,
     ErrorPageComponent,
     OrderItemComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginFormService,OrderService],
+  providers: [LoginService,OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

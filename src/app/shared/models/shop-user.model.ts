@@ -4,8 +4,8 @@ import { ShopUserRole } from "./shop-user-role.enum";
 export class ShopUser {
   private _shopUserId: number;
   private _shopUserEmail: string;
-  private _shopUserRole: ShopUserRole;
   private _password: string;
+  private _shopUserRole: ShopUserRole;
   private _yearOfBirth: number;
   private _monthOfBirth: number;
   private _dayOfBirth: number;

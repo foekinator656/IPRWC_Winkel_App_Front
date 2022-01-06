@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnChanges, OnInit, Output} from '@angular/core';
-import {LoginFormService} from "../login-form/login-form.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {LoginService} from "../login/login.service";
+import {ShopUserRole} from "../shared/models/shop-user-role.enum";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import {LoginFormService} from "../login-form/login-form.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public loginService: LoginFormService) { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loginService.makeWelcomeString()

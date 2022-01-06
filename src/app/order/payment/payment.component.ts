@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginFormService} from "../login-form/login-form.service";
-import {OrderService} from "../order/order.service";
-import {BikeOrder} from "../shared/models/bike-order.model";
+import {LoginService} from "../../login/login.service";
+import {OrderService} from "../order.service";
+import {BikeOrder} from "../../shared/models/bike-order.model";
 
 @Component({
   selector: 'app-payment',
@@ -10,7 +10,7 @@ import {BikeOrder} from "../shared/models/bike-order.model";
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(public loginFormService: LoginFormService, public orderService: OrderService) { }
+  constructor(public loginFormService: LoginService, public orderService: OrderService) { }
 
   ngOnInit(): void {
   }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ShopContentComponent} from "./shopcontent/shop-content.component";
 import {ErrorPageComponent} from './error-page/error-page.component';
-import {PaymentComponent} from "./payment/payment.component";
+import {PaymentComponent} from "./order/payment/payment.component";
 import {OrderComponent} from "./order/order.component";
 import {LoginComponent} from "./login/login.component";
 

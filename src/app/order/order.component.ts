@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OrderService} from "./order.service";
-import {LoginFormService} from "../login-form/login-form.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class OrderComponent implements OnInit {
   @Input() totalOrderPrice: number = 0;
-  constructor(public orderService: OrderService, public loginService: LoginFormService, public router: Router) { }
+  constructor(public orderService: OrderService,  public router: Router) { }
 
   ngOnInit(): void {
   }

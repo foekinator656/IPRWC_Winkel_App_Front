@@ -14,9 +14,12 @@ export class OrderService {
   bikesInCart: Bike[] = [];
   totalOrderPrice: number = 0;
   responseBikeOrderId!: number;
-  delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+  sendSuccess: boolean = false;
 
-  constructor(private http: HttpClient,private apiService: ApiService, private loginFormService: LoginFormService) { }
+  delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+  public errorMessage!: string;
+
+  constructor(private http: HttpClient,private apiService: ApiService, private loginFormService: LoginService) { }
 
 
   addBikeModelToCart(bikeModelId: number) {
@@ -36,30 +39,29 @@ export class OrderService {
     this.totalOrderPrice += - bike.price;
   }
 
- async sendOrder() {
-    let bikeOrder = new BikeOrder(BikeOrderStatusEnum.ORDER_CONFIRMED, this.loginFormService.shopUser);
+  async sendOrder() {
+    let bikeModelIds: number[] = [];
+    for (let i = 0; i < this.bikesInCart.length; i++) {
+      bikeModelIds.push(this.bikesInCart[i].bikeModel.bikeModelId);
+    }
     console.log(" ====== send Order ======");
     console.log(bikeOrder);
     console.log(" userId: "+this.loginFormService.shopUser.shopUserId);
     let shopUserId: number = this.loginFormService.shopUser.shopUserId;
-    this.http.post<number>(this.apiService.apiUrl+'bikeorder/'+shopUserId,bikeOrder)
-     .subscribe(response => {
+    this.http.post<number>(this.apiService.apiUrl+'bikeorder/'+shopUserId,bikeModelIds)
+      .subscribe(response => {
+        console.log("======Response: " + response);
+        console.log(" Bike order ID " + response);
+        this.responseBikeOrderId = response;
+        this.sendSuccess = true;
 
-       console.log("======Response: " + response);
-       console.log(" Bike order ID " + response);
-       this.responseBikeOrderId = response;
-       // TODO error message geven wanneer het fout gaat
-     });
-   while (this.responseBikeOrderId === undefined){
-     await this.delay(1000);
-   }
-    console.log(" XXXXX response id: " + this.responseBikeOrderId);
-    for (let bike in this.bikesInCart){
-      this.http.post<number>(this.apiService.apiUrl+'bike/add/'+this.responseBikeOrderId, bike);
-        // .subscribe(responseBikeId => {
-        //   console.log("Bike met Id " + responseBikeId + " is aangemaakt");
-        //   // TODO error message geven wanneer het fout gaat
-        // });
+
+      },(error => {
+        console.log(error)
+        this.errorMessage = error;
+      }));
+    while (this.responseBikeOrderId === undefined){
+      await this.delay(1000);
     }
     return  this.responseBikeOrderId;
   }
