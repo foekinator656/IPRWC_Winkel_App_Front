@@ -3,9 +3,7 @@ import {Bike} from "../shared/models/bike.model";
 import {HttpClient} from "@angular/common/http";
 import {ApiService} from "../shared/api.service";
 import {BikeModel} from "../shared/models/bike-model.model";
-import {BikeOrderStatusEnum} from "../shared/models/bike-order-status.enum";
-import {BikeOrder} from "../shared/models/bike-order.model";
-import {LoginFormService} from "../login-form/login-form.service";
+import {LoginService} from "../login/login.service";
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +43,7 @@ export class OrderService {
       bikeModelIds.push(this.bikesInCart[i].bikeModel.bikeModelId);
     }
     console.log(" ====== send Order ======");
-    console.log(bikeOrder);
+    console.log(bikeModelIds);
     console.log(" userId: "+this.loginFormService.shopUser.shopUserId);
     let shopUserId: number = this.loginFormService.shopUser.shopUserId;
     this.http.post<number>(this.apiService.apiUrl+'bikeorder/'+shopUserId,bikeModelIds)
@@ -63,6 +61,7 @@ export class OrderService {
     while (this.responseBikeOrderId === undefined){
       await this.delay(1000);
     }
+    this.bikesInCart = [];
     return  this.responseBikeOrderId;
   }
 }

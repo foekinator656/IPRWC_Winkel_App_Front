@@ -8,6 +8,8 @@ import {ShopUserRole} from "../shared/models/shop-user-role.enum";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  dataAdmin = ShopUserRole.DATA_ADMIN;
+  sysAdmin = ShopUserRole.SYS_ADMIN;
 
   constructor(public loginService: LoginService) { }
 

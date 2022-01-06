@@ -15,12 +15,7 @@ export class OrderComponent implements OnInit {
   }
 
   onOrderButtonPressed() {
+    this.orderService.sendSuccess = false;
     this.router.navigate(['/','payment']);
-    // if(this.loginService.shopUser !== undefined){
-    //   this.router.navigate(['/','payment']);
-    // } else {
-    //   this.router.navigate(['/','login']);
-    // }
-
   }
 }

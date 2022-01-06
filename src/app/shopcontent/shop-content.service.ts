@@ -7,6 +7,7 @@ import {ApiService} from "../shared/api.service";
   providedIn: 'root'
 })
 export class ShopContentService {
+  public errorMessage!: string;
 
   bikeModels: BikeModel[] = [];
 
@@ -17,6 +18,9 @@ export class ShopContentService {
       .subscribe(bikeModels => {
         console.log(bikeModels);
         this.bikeModels = bikeModels;
+      }, error => {
+        console.log(error);
+        this.errorMessage = error;
       });
   }
 

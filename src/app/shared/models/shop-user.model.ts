@@ -2,7 +2,7 @@ import { ShopUserRole } from "./shop-user-role.enum";
 
 
 export class ShopUser {
-  private _shopUserId: number;
+  private _shopUserId!: any;
   private _shopUserEmail: string;
   private _password: string;
   private _shopUserRole: ShopUserRole;
@@ -11,15 +11,21 @@ export class ShopUser {
   private _dayOfBirth: number;
   private _firstName: string;
   private _middleName: string;
-  private _lastNam: string;
+  private _lastName: string;
   private _street: string;
   private _houseNr: string;
   private _postalCode: string;
   private _city: string;
 
 
-  constructor(shopUserId: number, shopUserEmail: string, shopUserRole: ShopUserRole, password: string, yearOfBirth: number, monthOfBirth: number, dayOfBirth: number, firstName: string, middleName: string, lastNam: string, street: string, houseNr: string, postalCode: string, city: string) {
-    this._shopUserId = shopUserId;
+  constructor(shopUserId: any,shopUserEmail: string,
+               password: string,shopUserRole: ShopUserRole,
+              yearOfBirth: number, monthOfBirth: number,
+              dayOfBirth: number, firstName: string,
+              middleName: string, lastName: string,
+              street: string, houseNr: string,
+              postalCode: string, city: string) {
+    this._shopUserId! = shopUserId;
     this._shopUserEmail = shopUserEmail;
     this._shopUserRole = shopUserRole;
     this._password = password;
@@ -28,7 +34,7 @@ export class ShopUser {
     this._dayOfBirth = dayOfBirth;
     this._firstName = firstName;
     this._middleName = middleName;
-    this._lastNam = lastNam;
+    this._lastName = lastName;
     this._street = street;
     this._houseNr = houseNr;
     this._postalCode = postalCode;
@@ -73,7 +79,7 @@ export class ShopUser {
   }
 
   get lastNam(): string {
-    return this._lastNam;
+    return this._lastName;
   }
 
   get street(): string {
