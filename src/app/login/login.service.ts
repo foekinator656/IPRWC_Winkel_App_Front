@@ -8,7 +8,7 @@ import {ApiService} from "../shared/api.service";
   providedIn: 'root'
 })
 export class LoginService {
-  public errorMessage!: string = "ikeb hier";
+  public errorMessage!: string;
   private _shopUser!: ShopUser;
   private _userIsLoggedIn: boolean = false;
   public welcomeString: string = "";
