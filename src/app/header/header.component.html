@@ -25,7 +25,15 @@
             [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/account" (click)="onProfileView()">{{loginService.welcomeString}}</a>
         </li>
+        <li *ngIf="loginService.userIsLoggedIn && loginService.userIsAdmin" role="presentation"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/manage">Beheer</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
+
+
