@@ -16,7 +16,6 @@ export class ShopContentService {
   fetchBikeModels() {
     this.http.get<BikeModel[]>(this.apiService.apiUrl+'bikemodel')
       .subscribe(bikeModels => {
-        console.log(bikeModels);
         this.bikeModels = bikeModels;
       }, error => {
         console.log(error);

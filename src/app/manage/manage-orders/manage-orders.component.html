@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="alert alert-danger" *ngIf="this.errorMessage">
+      <p><strong>Probleem met laden Orders van de database</strong></p>
+    </div>
+    <app-order-list-item
+      *ngFor="let singleOrder of this.bikeOrders; let i = index"
+      [bikeOrder]="singleOrder"
+      [bikeOrderPrice] = "this.bikeOrderPrices[i]"
+      ></app-order-list-item>
+<!--    [bikeOrderPrice] = "this.bikeOrderPrices[i]"-->
+  </div>
+</div>

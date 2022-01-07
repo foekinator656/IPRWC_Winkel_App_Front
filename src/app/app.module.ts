@@ -17,6 +17,13 @@ import {OrderService} from "./order/order.service";
 import { OrderItemComponent } from './order/order-item/order-item.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationFormComponent } from './login/registration-form/registration-form.component';
+import { AccountComponent } from './login/account/account.component';
+import { ManageComponent } from './manage/manage.component';
+import { ManageOrdersComponent } from './manage/manage-orders/manage-orders.component';
+import { ManageUsersComponent } from './manage/manage-users/manage-users.component';
+import { OrderListItemComponent } from './manage/manage-orders/order-list-item/order-list-item.component';
+import {OrdersService} from "./manage/manage-orders/orders-service";
+
 
 @NgModule({
   declarations: [
@@ -30,7 +37,12 @@ import { RegistrationFormComponent } from './login/registration-form/registratio
     ErrorPageComponent,
     OrderItemComponent,
     LoginComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    AccountComponent,
+    ManageComponent,
+    ManageOrdersComponent,
+    ManageUsersComponent,
+    OrderListItemComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +50,7 @@ import { RegistrationFormComponent } from './login/registration-form/registratio
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService,OrderService],
+  providers: [LoginService,OrderService,OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,8 +16,7 @@ export class ShopContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.shopcontentService.fetchBikeModels();
-    // this.fetchBikeModels();
-    // TODO clear the list with bikes in the order
+
   }
 
   // private fetchBikeModels() {

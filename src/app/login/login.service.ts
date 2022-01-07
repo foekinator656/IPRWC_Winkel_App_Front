@@ -76,28 +76,10 @@ export class LoginService {
   }
 
   registrationUser(registrationRequest: ShopUser) {
-    console.log(" XXXXX in registrationUser" +  this.userIsLoggedIn);
+    // console.log(" XXXXX in registrationUser" + this.userIsLoggedIn);
     if (!this.userIsLoggedIn) {
-      let paramString = "?emailReg=" + registrationRequest.shopUserEmail+"\"";
-      paramString += "&passwordReg=" + registrationRequest.password+"\"";
-      paramString += "&dobYear=" + registrationRequest.yearOfBirth+"\"";
-      paramString += "&dobMonth=" + registrationRequest.monthOfBirth+"\"";
-      paramString += "&dobDay=" + registrationRequest.dayOfBirth+"\"";
-      paramString += "&firstNameReg=" + registrationRequest.firstName+"\"";
-      paramString += "&middleNameReg=" + registrationRequest.middleName+"\"";
-      paramString += "&lastNameReg=" + registrationRequest.lastNam+"\"";
-      paramString += "&streetReg=" + registrationRequest.street+"\"";
-      paramString += "&houseNrReg=" + registrationRequest.houseNr+"\"";
-      paramString += "&postalcodeReg=" + registrationRequest.postalCode+"\"";
-      paramString += "&cityReg=" + registrationRequest.city+"\"";
-      console.log(paramString);
 
-
-
-
-
-
-      this.http.post<ShopUser>(this.apiService.apiUrl + 'shopuser/register' + paramString, registrationRequest)
+      this.http.post<ShopUser>(this.apiService.apiUrl + 'shopuser/register', registrationRequest)
         .subscribe(shopUser => {
             console.log(shopUser);
             this.shopUser = shopUser;
